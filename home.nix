@@ -92,6 +92,7 @@
 
   programs.zsh = {
     enable = true;
+    enableCompletion = true;
     envExtra = ''
       eval "$(starship init zsh)"
     '';
