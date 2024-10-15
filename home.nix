@@ -76,10 +76,17 @@
 
   # Start porting stuff across
   programs.lazygit = {
-      enable = true;
+    enable = true;
       settings = {
         gui.border = "double";  
         gui.theme.selectedLineBgColor = [ "reverse" ];
       };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    # how do I read the toml format of my config into here?
   };
 }
