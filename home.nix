@@ -91,14 +91,16 @@
   };
 
   programs.zsh = {
+    enable = true;
     envExtra = ''
       eval "$(starship init zsh)"
     '';
-  }
+  };
 
   programs.bash = {
+    enable = true;
     envExtra = ''
       eval "$(starship init bash)"
     '';
-  }
+  };
 }
