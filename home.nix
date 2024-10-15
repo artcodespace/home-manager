@@ -89,4 +89,16 @@
     enableZshIntegration = true;
     # how do I read the toml format of my config into here?
   };
+
+  programs.zsh = {
+    envExtra = ''
+      eval "$(starship init zsh)"
+    '';
+  }
+
+  programs.bash = {
+    envExtra = ''
+      eval "$(starship init bash)"
+    '';
+  }
 }
