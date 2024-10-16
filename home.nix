@@ -160,6 +160,6 @@
       pkgs.nixd
       pkgs.vscode-langservers-extracted
     ];
-    extraLuaConfig = builtins.readFile ./config/nvim.lua;
+    extraLuaConfig = builtins.readFile ./config/nvim/init.lua;
   };
 }
