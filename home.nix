@@ -117,5 +117,5 @@
     enableZshIntegration = true;
     #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
     extraConfig = builtins.readFile ./config/wezterm.lua;
-  }
+  };
 }
