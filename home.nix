@@ -119,7 +119,12 @@
     extraConfig = builtins.readFile ./config/wezterm.lua;
   };
   
-  programs.neovim = {
+  programs.neovim = 
+  let
+    toLua = str: "lua << EOF\n${str}\nEOF\n";
+    toLuaFile = str: "lua << EOF\n${builtins.readFile file}\nEOF\n";
+  in
+  {
     enable = true;
     viAlias = true;
     vimAlias = true;
@@ -155,5 +160,6 @@
       pkgs.nixd
       pkgs.vscode-langservers-extracted
     ];
+    extraLuaConfig = builtins.readFile ./config/nvim.lua;
   };
 }
