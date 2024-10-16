@@ -152,6 +152,7 @@
       pkgs.nodePackages.typescript-language-server
       pkgs.nodePackages.eslint
       pkgs.prettierd
+      pkgs.nixd
       pkgs.vscode-langservers-extracted
     ];
   };
