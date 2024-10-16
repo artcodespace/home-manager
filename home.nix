@@ -108,7 +108,7 @@
     shell = "${pkgs.zsh}/bin/zsh";
     sensibleOnTop = false;
     terminal = "tmux-256color";
-    extraConfig = builtins.readFile ./config/tmux.conf;
+    extraConfig = builtins.readFile ./config/tmux/tmux.conf;
   };
 
   programs.wezterm = {
@@ -116,7 +116,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
-    extraConfig = builtins.readFile ./config/wezterm.lua;
+    extraConfig = builtins.readFile ./config/wezterm/wezterm.lua;
   };
   
   programs.neovim = 
