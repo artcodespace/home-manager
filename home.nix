@@ -101,6 +101,7 @@
 
   programs.tmux = {
     enable = true;
+    shell = "${pkgs.zsh}/bin/zsh";
     baseIndex = 1;
     escapeTime = 0;
     keyMode = "vi";
