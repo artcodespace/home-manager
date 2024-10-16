@@ -110,4 +110,12 @@
     terminal = "tmux-256color";
     extraConfig = builtins.readFile ./config/tmux.conf;
   };
+
+  programs.wezterm = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
+    extraConfig = builtins.readFile ./config/wezterm.lua;
+  }
 }
