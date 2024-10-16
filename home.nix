@@ -75,6 +75,10 @@
   programs.home-manager.enable = true;
 
   # Start porting stuff across
+  # programs.git = { for ...git
+  #   enable = true;
+  # };
+
   programs.lazygit = {
     enable = true;
       settings = {
@@ -131,6 +135,7 @@
     vimdiffAlias = true;
     defaultEditor = true;
     plugins = [
+      # TODO >>> Add in the package config as per the vimjoyer video
       pkgs.vimPlugins.conform-nvim
       pkgs.vimPlugins.fzf-lua
       pkgs.vimPlugins.nvim-lspconfig
