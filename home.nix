@@ -146,5 +146,13 @@
       ]))
       pkgs.vimPlugins.vim-tmux-navigator
     ];
+    extraPackages = [
+      pkgs.lua-language-server
+      pkgs.stylua
+      pkgs.nodePackages.typescript-language-server
+      pkgs.nodePackages.eslint
+      pkgs.prettierd
+      pkgs.vscode-langservers-extracted
+    ];
   };
 }
