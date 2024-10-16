@@ -101,11 +101,12 @@
 
   programs.tmux = {
     enable = true;
-    shell = "${pkgs.zsh}/bin/zsh";
     baseIndex = 1;
     escapeTime = 0;
     keyMode = "vi";
     mouse = true;
+    shell = "${pkgs.zsh}/bin/zsh";
+    sensibleOnTop = false;
     terminal = "tmux-256color";
     extraConfig = builtins.readFile ./config/tmux.conf;
   };
