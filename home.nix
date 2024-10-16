@@ -88,6 +88,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     # how do I read the toml format of my config into here?
+    # see https://github.com/dmmulroy/kickstart.nix/blob/main/module/home-manager.nix
   };
 
   programs.zsh = {
@@ -96,5 +97,15 @@
     envExtra = ''
       eval "$(starship init zsh)"
     '';
+  };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    escapeTime = 0;
+    keyMode = "vi";
+    mouse = true;
+    terminal = "tmux-256color";
+    extraConfig = builtins.readFile ./config/tmux.conf;
   };
 }
