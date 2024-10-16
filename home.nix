@@ -137,7 +137,7 @@
 	p.tree-sitter-bash
 	p.tree-sitter-lua
 	p.tree-sitter-json
-      ]));
+      ]))
       pkgs.vimPlugins.vim-tmux-navigator
     ];
   };
