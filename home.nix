@@ -131,6 +131,13 @@
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.nvim-surround
       pkgs.vimPlugins.nvim-treesitter
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins (p : [
+        p.tree-sitter-nix
+	p.tree-sitter-vim
+	p.tree-sitter-bash
+	p.tree-sitter-lua
+	p.tree-sitter-json
+      ]));
       pkgs.vimPlugins.vim-tmux-navigator
     ];
   };
