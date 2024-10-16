@@ -118,4 +118,20 @@
     #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
     extraConfig = builtins.readFile ./config/wezterm.lua;
   };
+  
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    defaultEditor = true;
+    plugins = [
+      pkgs.vimPlugins.conform-nvim
+      pkgs.vimPlugins.fzf-lua
+      pkgs.vimPlugins.nvim-lspconfig
+      pkgs.vimPlugins.nvim-surround
+      pkgs.vimPlugins.nvim-treesitter
+      pkgs.vimPlugins.vim-tmux-navigator
+    ];
+  };
 }
