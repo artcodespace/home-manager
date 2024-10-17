@@ -1,16 +1,21 @@
-{ config, pkgs, inputs, ... }:
-
 {
+  config,
+  pkgs,
+  inputs,
+  ...
+}: {
   # We could probably do this more simply, but use this from the guide for now
   nixpkgs = {
     overlays = [
       (final: prev: {
-        vimPlugins = prev.vimPlugins // {
-          own-colorscheme-pax = prev.vimUtils.buildVimPlugin {
-            name = "pax";
-            src = inputs.colorscheme-pax;
+        vimPlugins =
+          prev.vimPlugins
+          // {
+            own-colorscheme-pax = prev.vimUtils.buildVimPlugin {
+              name = "pax";
+              src = inputs.colorscheme-pax;
+            };
           };
-        };
       })
     ];
   };
@@ -66,8 +71,8 @@
     # Use this to make the pax scheme appear in the colours list in neovim
     pax = {
       enable = true;
-      source = ./config/nvim/colors/pax.lua
-      target = ./nvim/colors/pax.lua
+      source = ./config/nvim/colors/pax.lua;
+      target = ./nvim/colors/pax.lua;
     };
   };
 
@@ -101,10 +106,10 @@
 
   programs.lazygit = {
     enable = true;
-      settings = {
-        gui.border = "double";  
-        gui.theme.selectedLineBgColor = [ "reverse" ];
-      };
+    settings = {
+      gui.border = "double";
+      gui.theme.selectedLineBgColor = ["reverse"];
+    };
   };
 
   programs.starship = {
@@ -142,14 +147,12 @@
     #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
     extraConfig = builtins.readFile ./config/wezterm/wezterm.lua;
   };
-  
-  programs.neovim = 
-  let
+
+  programs.neovim = let
     # Helpers to let us load lua config in via the plugin sets
     toLua = str: "lua << EOF\n${str}\nEOF\n";
     toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
-  in
-  {
+  in {
     enable = true;
     viAlias = true;
     vimAlias = true;
@@ -184,7 +187,7 @@
         plugin = pkgs.vimPlugins.nvim-treesitter;
         config = toLuaFile ./config/nvim/plugins/nvim-treesitter.lua;
       }
-      (pkgs.vimPlugins.nvim-treesitter.withPlugins (p : [
+      (pkgs.vimPlugins.nvim-treesitter.withPlugins (p: [
         p.tree-sitter-bash
         p.tree-sitter-comment
         p.tree-sitter-css
