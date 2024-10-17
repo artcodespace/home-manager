@@ -125,6 +125,7 @@
   
   programs.neovim = 
   let
+    # Helpers to let us load lua config in via the plugin sets
     toLua = str: "lua << EOF\n${str}\nEOF\n";
     toLuaFile = file: "lua << EOF\n${builtins.readFile file}\nEOF\n";
   in
@@ -135,26 +136,43 @@
     vimdiffAlias = true;
     defaultEditor = true;
     plugins = [
-      # TODO >>> Add in the package config as per the vimjoyer video
-      pkgs.vimPlugins.conform-nvim
-      pkgs.vimPlugins.fzf-lua
-      pkgs.vimPlugins.nvim-lspconfig
-      pkgs.vimPlugins.nvim-surround
-      pkgs.vimPlugins.nvim-treesitter
+      {
+        plugin = pkgs.vimPlugins.conform-nvim;
+        config = toLuaFile ./config/nvim/plugins/conform.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.fzf-lua;
+        config = toLuaFile ./config/nvim/plugins/fzf-lua.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-lspconfig;
+        config = toLuaFile ./config/nvim/plugins/nvim-lspconfig.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-surround;
+        config = toLua "require('nvim-surround').setup()";
+      }
+      {
+        plugin = pkgs.vimPlugins.vim-tmux-navigator;
+        config = toLuaFile ./config/nvim/plugins/vim-tmux-navigator.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-treesitter;
+        config = toLuaFile ./config/nvim/plugins/nvim-treesitter.lua;
+      }
       (pkgs.vimPlugins.nvim-treesitter.withPlugins (p : [
-	p.tree-sitter-bash
-	p.tree-sitter-comment
-	p.tree-sitter-css
-	p.tree-sitter-javascript
-	p.tree-sitter-json
-	p.tree-sitter-lua
+        p.tree-sitter-bash
+        p.tree-sitter-comment
+        p.tree-sitter-css
+        p.tree-sitter-javascript
+        p.tree-sitter-json
+        p.tree-sitter-lua
         p.tree-sitter-nix
-	p.tree-sitter-tsx
-	p.tree-sitter-typescript
-	p.tree-sitter-vim
-	p.tree-sitter-vimdoc
+        p.tree-sitter-tsx
+        p.tree-sitter-typescript
+        p.tree-sitter-vim
+        p.tree-sitter-vimdoc
       ]))
-      pkgs.vimPlugins.vim-tmux-navigator
     ];
     extraPackages = [
       pkgs.lua-language-server
