@@ -199,6 +199,7 @@
       pkgs.nodePackages.eslint
       pkgs.prettierd
       pkgs.nixd
+      pkgs.alejandra
       pkgs.vscode-langservers-extracted
     ];
     extraLuaConfig = builtins.readFile ./config/nvim/init.lua;
