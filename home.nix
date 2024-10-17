@@ -69,8 +69,8 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     # Use this to make the pax scheme appear in the colours list in neovim
-    "nvim/colors/pax.lua" = {
-      source = ./config/nvim/colors/pax.lua;
+    ".config/nvim/colors/pax.lua" = {
+      text = "require('pax').load()";
     };
   };
 
