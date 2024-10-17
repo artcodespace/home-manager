@@ -3,11 +3,11 @@
     "colorscheme-pax": {
       "flake": false,
       "locked": {
-        "lastModified": 1726604935,
-        "narHash": "sha256-hW4XsdSB+nfsjaXm4MXyrwZbT381P5ep+Wu/jFzw1fI=",
+        "lastModified": 1729170693,
+        "narHash": "sha256-GzOQJfLz8nSppJ2wMSXpJ7pLYWjmo4vKntv3EKHYvL8=",
         "owner": "alunturner",
         "repo": "pax",
-        "rev": "26fcb99d9bd0e27b2b0b9fe6586181258463481f",
+        "rev": "5ce4c0e8cfb5750e80d40a79f6d8f3830571a546",
         "type": "github"
       },
       "original": {
