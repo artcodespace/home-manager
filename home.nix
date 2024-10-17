@@ -63,6 +63,12 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+    # Use this to make the pax scheme appear in the colours list in neovim
+    pax = {
+      enable = true;
+      source = ./config/nvim/colors/pax.lua
+      target = ./nvim/colors/pax.lua
+    };
   };
 
   # Home Manager can also manage your environment variables through
