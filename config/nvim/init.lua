@@ -86,7 +86,7 @@ vim.opt.rulerformat = "%3(%=%{%v:lua.Ruler()%}%)"
 -- INITIALISE TODO >>> figure out how to load pax (custom input in nix speak)
 -- vim.opt.background = "dark"
 -- vim.cmd("colorscheme pax")
--- vim.cmd("au VimEnter * FzfLua files")
+-- Start neovim with fzf open if no arguments passed
 vim.api.nvim_create_autocmd("VimEnter", {
 	pattern = "*",
 	callback = function()
