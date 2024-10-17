@@ -24,17 +24,6 @@ lspconfig.lua_ls.setup({
 lspconfig.cssls.setup({})
 lspconfig.nixd.setup({})
 
--- Use LspAttach to set mapping after the language server attaches
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		-- these could potentially be guarded, see :h lsp-config
-		local opts = { buffer = args.buf }
-		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
-		vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
-	end,
-})
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "rounded",
 })

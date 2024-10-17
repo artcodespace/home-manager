@@ -14,6 +14,27 @@ vim.keymap.set("n", "gd", fzf.lsp_definitions)
 vim.keymap.set("n", "<leader>h", fzf.helptags)
 vim.keymap.set("n", "<leader><leader>", fzf.resume)
 
+-- AUTOCOMMANDS
+-- Use LspAttach to set mapping after the language server attaches
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		-- these could potentially be guarded, see :h lsp-config
+		local opts = { buffer = args.buf }
+		vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, opts)
+		vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, opts)
+	end,
+})
+-- Start neovim with fzf open if no arguments passed
+vim.api.nvim_create_autocmd("VimEnter", {
+	pattern = "*",
+	callback = function()
+		if next(vim.fn.argv()) == nil then
+			require("fzf-lua").files()
+		end
+	end,
+})
+
 -- KEYBINDS
 local ERROR = { severity = vim.diagnostic.severity.ERROR }
 vim.keymap.set("n", "<Esc>", function()
@@ -98,12 +119,3 @@ vim.opt.rulerformat = "%3(%=%{%v:lua.Ruler()%}%)"
 -- INITIALISE TODO >>> figure out how to load pax (custom input in nix speak)
 -- vim.opt.background = "dark"
 -- vim.cmd("colorscheme pax")
--- Start neovim with fzf open if no arguments passed
-vim.api.nvim_create_autocmd("VimEnter", {
-	pattern = "*",
-	callback = function()
-		if next(vim.fn.argv()) == nil then
-			require("fzf-lua").files()
-		end
-	end,
-})
