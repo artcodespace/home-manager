@@ -68,10 +68,10 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    # Use this to make the pax scheme appear in the colours list in neovim
-    ".config/nvim/colors/pax.lua" = {
-      text = "require('pax').load()";
-    };
+  };
+
+  xdg.configFile = {
+    "nvim/colors/pax.lua".text = "require('pax').load()";
   };
 
   # Home Manager can also manage your environment variables through
