@@ -6,7 +6,7 @@
     overlays = [
       (final: prev: {
         vimPlugins = prev.vimPlugins // {
-          own-colorscheme-pax = prev.vimUitls.buildVimPlugin {
+          own-colorscheme-pax = prev.vimUtils.buildVimPlugin {
             name = "pax";
             src = inputs.colorscheme-pax;
           };
