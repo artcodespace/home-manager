@@ -171,6 +171,10 @@
         config = toLua "vim.g.tmux_navigator_no_wrap = 1";
       }
       {
+        plugin = pkgs.vimPlugins.own-colorscheme-pax;
+        config = "colorscheme pax";
+      }
+      {
         plugin = pkgs.vimPlugins.nvim-treesitter;
         config = toLuaFile ./config/nvim/plugins/nvim-treesitter.lua;
       }
