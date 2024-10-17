@@ -102,10 +102,6 @@
     enable = true;
     userName = "alunturner";
     userEmail = "alun.turner@googlemail.com";
-    aliases = {
-      gaa = "add .";
-      gcm = "git commit -m";
-    };
   };
 
   programs.lazygit = {
