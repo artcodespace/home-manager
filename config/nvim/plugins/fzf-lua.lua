@@ -8,9 +8,7 @@ local function configure_finder(title, opts)
 	})
 end
 
-local fzf = require("fzf-lua")
-
-fzf.setup({
+require("fzf-lua").setup({
 	defaults = {
 		file_icons = false,
 		git_icons = false,
@@ -66,14 +64,3 @@ fzf.setup({
 	},
 	helptags = configure_finder("Help"),
 })
-
-vim.keymap.set("n", "<leader>f", fzf.files)
-vim.keymap.set("n", "<leader>s", fzf.grep_project)
-vim.keymap.set("n", "<leader>d", fzf.lsp_document_diagnostics)
-vim.keymap.set("n", "<leader>o", fzf.lsp_document_symbols)
-vim.keymap.set("n", "<leader>O", fzf.lsp_live_workspace_symbols)
-vim.keymap.set("n", "gr", fzf.lsp_references)
-vim.keymap.set("n", "gd", fzf.lsp_definitions)
-vim.keymap.set("n", "<leader>h", fzf.helptags)
-vim.keymap.set("n", "<leader><leader>", fzf.resume)
-
