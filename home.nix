@@ -98,9 +98,15 @@
   programs.home-manager.enable = true;
 
   # Start porting stuff across
-  # programs.git = { for ...git
-  #   enable = true;
-  # };
+  programs.git = {
+    enable = true;
+    userName = "alunturner";
+    userEmail = "alun.turner@googlemail.com";
+    aliases = {
+      gaa = "add .";
+      gcm = "git commit -m";
+    };
+  };
 
   programs.lazygit = {
     enable = true;
