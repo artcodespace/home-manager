@@ -1,6 +1,20 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
+  # We could probably do this more simply, but use this from the guide for now
+  nixpkgs = {
+    overlays = [
+      (final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          own-colorscheme-pax = prev.vimUitls.buildVimPlugin {
+            name = "pax";
+            src = inputs.colorscheme-pax;
+          };
+        };
+      })
+    ];
+  };
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "alunturner";
