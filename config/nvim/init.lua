@@ -87,7 +87,7 @@ vim.opt.rulerformat = "%3(%=%{%v:lua.Ruler()%}%)"
 -- vim.opt.background = "dark"
 -- vim.cmd("colorscheme pax")
 -- vim.cmd("au VimEnter * FzfLua files")
-vim.api.nvim_create_autcmd("VimEnter", {
+vim.api.nvim_create_autocmd("VimEnter", {
 	pattern = "*",
 	callback = function()
 		if next(vim.fn.argv() == nil) then
