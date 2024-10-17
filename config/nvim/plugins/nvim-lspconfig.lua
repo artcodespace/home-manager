@@ -21,9 +21,8 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
-lspconfig.css_variables.setup({})
 lspconfig.cssls.setup({})
-lspconfig.cssmodules_ls.setup({})
+lspconfig.nixd.setup({})
 
 -- Use LspAttach to set mapping after the language server attaches
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -42,4 +41,3 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "rounded",
 })
-
