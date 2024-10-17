@@ -172,7 +172,7 @@
       }
       {
         plugin = pkgs.vimPlugins.own-colorscheme-pax;
-        config = "colorscheme pax";
+        config = toLua "require('pax').load()";
       }
       {
         plugin = pkgs.vimPlugins.nvim-treesitter;
