@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "colorscheme-pax": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1726604935,
+        "narHash": "sha256-hW4XsdSB+nfsjaXm4MXyrwZbT381P5ep+Wu/jFzw1fI=",
+        "owner": "alunturner",
+        "repo": "pax",
+        "rev": "26fcb99d9bd0e27b2b0b9fe6586181258463481f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alunturner",
+        "repo": "pax",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -38,6 +54,7 @@
     },
     "root": {
       "inputs": {
+        "colorscheme-pax": "colorscheme-pax",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }
