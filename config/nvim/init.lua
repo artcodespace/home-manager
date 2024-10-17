@@ -28,13 +28,14 @@ vim.keymap.set("n", "]e", function()
 	vim.diagnostic.goto_next(ERROR)
 end, { silent = true })
 vim.keymap.set("i", "<C-j>", "<C-x><C-o>", { silent = true }) -- Lsp completion
-vim.api.nvim_create_user_command("Tsc", function()
-	local ts_root = vim.fs.root(0, "tsconfig") -- may need updating in a TS proj at work
-	if ts_root == nil then
-		return print("Unable to find tsconfig")
-	end
-	vim.cmd("compiler tsc | echo 'Building TypeScript...' | silent make! --noEmit | echo 'TypeScript built.' | copen")
-end, {})
+-- TODO >>> combine this investigation with tsc.nvim fork
+-- vim.api.nvim_create_user_command("Tsc", function()
+-- 	local ts_root = vim.fs.root(0, "tsconfig") -- may need updating in a TS proj at work
+-- 	if ts_root == nil then
+-- 		return print("Unable to find tsconfig")
+-- 	end
+-- 	vim.cmd("compiler tsc | echo 'Building TypeScript...' | silent make! --noEmit | echo 'TypeScript built.' | copen")
+-- end, {})
 
 -- OPTIONS
 vim.o.guicursor = vim.o.guicursor .. ",a:Cursor" -- append hl-Cursor to all modes
@@ -85,5 +86,12 @@ vim.opt.rulerformat = "%3(%=%{%v:lua.Ruler()%}%)"
 -- INITIALISE TODO >>> figure out how to load pax (custom input in nix speak)
 -- vim.opt.background = "dark"
 -- vim.cmd("colorscheme pax")
-vim.cmd("au VimEnter * FzfLua files")
-
+-- vim.cmd("au VimEnter * FzfLua files")
+vim.api.nvim_create_autcmd("VimEnter", {
+	pattern = "*",
+	callback = function()
+		if next(vim.fn.argv() == nil) then
+			require("fzf-lua").files()
+		end
+	end,
+})
