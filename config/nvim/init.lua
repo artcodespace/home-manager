@@ -149,7 +149,3 @@ function Ruler()
 	return has_errors and "%#DiagnosticError#███" or ""
 end
 vim.opt.rulerformat = "%3(%=%{%v:lua.Ruler()%}%)"
-
--- INITIALISE TODO >>> figure out how to load pax (custom input in nix speak)
--- vim.opt.background = "dark"
--- vim.cmd("colorscheme pax")
