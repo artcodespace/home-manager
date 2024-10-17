@@ -34,6 +34,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		end
 	end,
 })
+-- Don't show columns in these filetypes
+vim.api.nvim_create_autocmd("filetype", {
+	patter = { "netrw", "qf", "help" },
+	callback = function()
+		vim.opt_local.colorcolumn = ""
+		vim.opt_local.cursorcolumn = false
+	end,
+})
 -- What was previously in /after/ftplugin/netrw.lua
 vim.api.nvim_create_autocmd("filetype", {
 	pattern = "netrw",
@@ -43,8 +51,6 @@ vim.api.nvim_create_autocmd("filetype", {
 		vim.g.netrw_winsize = 30
 		vim.g.netrw_altfile = 1 -- make <C-6> go back to prev file, not netrw
 		vim.g.netrw_localcopydircmd = "cp -r" -- allow whole folder copying
-		vim.opt_local.colorcolumn = ""
-		vim.opt_local.cursorcolumn = false
 		function NetrwWinBar()
 			return "%#Normal#  %t %*%=%#Normal# 󰋞 " .. vim.fn.getcwd() .. " "
 		end
