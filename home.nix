@@ -72,7 +72,7 @@
     pax = {
       enable = true;
       source = ./config/nvim/colors/pax.lua;
-      target = ./nvim/colors/pax.lua;
+      target = "./nvim/colors/pax.lua";
     };
   };
 
