@@ -90,7 +90,7 @@ vim.opt.rulerformat = "%3(%=%{%v:lua.Ruler()%}%)"
 vim.api.nvim_create_autocmd("VimEnter", {
 	pattern = "*",
 	callback = function()
-		if next(vim.fn.argv() == nil) then
+		if next(vim.fn.argv()) == nil then
 			require("fzf-lua").files()
 		end
 	end,
