@@ -36,10 +36,18 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 -- Don't show columns in these filetypes
 vim.api.nvim_create_autocmd("filetype", {
-	patter = { "netrw", "qf", "help" },
+	pattern = { "netrw", "qf", "help" },
 	callback = function()
 		vim.opt_local.colorcolumn = ""
 		vim.opt_local.cursorcolumn = false
+	end,
+})
+-- add abbreviations to these filetypes
+vim.api.nvim_create_autocmd("filetype", {
+	pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	callback = function()
+		vim.cmd("iab <buffer> tbitd toBeInTheDocument()")
+		vim.cmd("iab <buffer> fna () => {}")
 	end,
 })
 -- What was previously in /after/ftplugin/netrw.lua
