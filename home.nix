@@ -154,7 +154,7 @@
       }
       {
         plugin = pkgs.vimPlugins.vim-tmux-navigator;
-        config = toLua "vim.g.tmux_navigator_no_wrap = 1"
+        config = toLua "vim.g.tmux_navigator_no_wrap = 1";
       }
       {
         plugin = pkgs.vimPlugins.nvim-treesitter;
