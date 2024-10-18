@@ -189,7 +189,7 @@
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
-    enableZshIntegraion = true;
+    enableZshIntegration = true;
     fileWidgetCommand = "fd --type f";
   };
 }
