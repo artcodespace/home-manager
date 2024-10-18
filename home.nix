@@ -186,4 +186,10 @@
   programs.ripgrep = {
     enable = true;
   };
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegraion = true;
+    fileWidgetCommand = "fd --type f";
+  };
 }
