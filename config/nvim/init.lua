@@ -68,6 +68,30 @@ vim.api.nvim_create_autocmd("filetype", {
 		vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<cr>", { remap = true, buffer = true })
 	end,
 })
+-- What was previously in /after/ftplugin/qf.lua
+vim.api.nvim_create_autocmd("filetype", {
+	pattern = "qf",
+	callback = function()
+		vim.keymap.set("n", "<C-n>", "<cmd>cnext | wincmd p<cr>", { remap = true, buffer = true })
+		vim.keymap.set("n", "<C-p>", "<cmd>cprev | wincmd p<cr>", { remap = true, buffer = true })
+		vim.keymap.set("n", "x", function()
+			-- use x to filter __highlighted__ entries from the qf list
+			local qf = vim.fn.getqflist({ idx = 0, items = 0 })
+			local current_idx = qf.idx
+
+			local new_qf_list = {}
+
+			for k, v in pairs(qf.items) do
+				if k ~= current_idx then
+					table.insert(new_qf_list, v)
+				end
+			end
+
+			vim.fn.setqflist(new_qf_list)
+		end, { remap = true, buffer = true })
+		vim.cmd("wincmd K")
+	end,
+})
 
 -- KEYBINDS
 local ERROR = { severity = vim.diagnostic.severity.ERROR }
