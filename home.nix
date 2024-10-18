@@ -183,4 +183,7 @@
     enable = true;
     # TODO >>> get to grips with this new tool and configure
   };
+  programs.ripgrep = {
+    enable = true;
+  };
 }
