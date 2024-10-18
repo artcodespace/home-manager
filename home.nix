@@ -73,7 +73,6 @@
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
     extraConfig = builtins.readFile ./config/wezterm/wezterm.lua;
   };
 
@@ -104,8 +103,9 @@
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    # TODO >>> how do I read the toml format of my config into here?
-    # see https://github.com/dmmulroy/kickstart.nix/blob/main/module/home-manager.nix
+    settings = {
+      format = "";
+    };
   };
 
   # Editor
