@@ -192,4 +192,7 @@
     enableZshIntegration = true;
     fileWidgetCommand = "fd --type f";
   };
+  programs.fd = {
+    enable = true;
+  };
 }
