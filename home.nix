@@ -4,7 +4,8 @@
   inputs,
   ...
 }: {
-  # We could probably do this more simply, but use this from the guide for now
+  # OVERLAYS
+  # We could probably do this more simply, but use this from the guide for now.
   nixpkgs = {
     overlays = [
       (final: prev: {
@@ -20,6 +21,7 @@
     ];
   };
 
+  # HOME
   home = {
     username = "alunturner";
     homeDirectory = "/Users/alunturner";
@@ -47,32 +49,31 @@
     "nvim/colors/pax.lua".text = "require('pax').load()";
   };
 
+  # PROGRAMS
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # See "Conjoined Rectangles of Success"
+  # Git
   programs.git = {
     enable = true;
     userName = "alunturner";
     userEmail = "alun.turner@googlemail.com";
   };
 
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      gui.border = "double";
-      gui.theme.selectedLineBgColor = ["reverse"];
-    };
-  };
+  # Tiling window manager
+  # TODO setup conditional use of yabai/hyprland
 
-  programs.starship = {
+  # Terminal
+  programs.wezterm = {
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    # how do I read the toml format of my config into here?
-    # see https://github.com/dmmulroy/kickstart.nix/blob/main/module/home-manager.nix
+    #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
+    extraConfig = builtins.readFile ./config/wezterm/wezterm.lua;
   };
 
+  # Shell - may be worth going over to bash for better `nix develop` experience
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -81,6 +82,7 @@
     '';
   };
 
+  # Multiplexer
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -93,14 +95,16 @@
     extraConfig = builtins.readFile ./config/tmux/tmux.conf;
   };
 
-  programs.wezterm = {
+  # Prompt
+  programs.starship = {
     enable = true;
     enableBashIntegration = true;
     enableZshIntegration = true;
-    #colorSchemes = {} Perhaps this is used to pull out the custom catpuccin?
-    extraConfig = builtins.readFile ./config/wezterm/wezterm.lua;
+    # TODO >>> how do I read the toml format of my config into here?
+    # see https://github.com/dmmulroy/kickstart.nix/blob/main/module/home-manager.nix
   };
 
+  # Editor
   programs.neovim = let
     # Helpers to let us load lua config in via the plugin sets
     toLua = str: "lua << EOF\n${str}\nEOF\n";
@@ -165,5 +169,18 @@
       pkgs.vscode-langservers-extracted
     ];
     extraLuaConfig = builtins.readFile ./config/nvim/init.lua;
+  };
+
+  # COMMAND LINE TOOLS
+  programs.lazygit = {
+    enable = true;
+    settings = {
+      gui.border = "double";
+      gui.theme.selectedLineBgColor = ["reverse"];
+    };
+  };
+  programs.yazi = {
+    enable = true;
+    # TODO >>> get to grips with this new tool and configure
   };
 }
