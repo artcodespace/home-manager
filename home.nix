@@ -104,7 +104,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     settings = {
-      format = "";
+      format = "[󰇥](yellow) $all";
     };
   };
 
