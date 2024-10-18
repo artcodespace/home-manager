@@ -29,7 +29,11 @@
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
     stateVersion = "24.05";
-    packages = [];
+    packages = [
+      pkgs.nodejs_22
+      pkgs.nodePackages.nodemon
+      # TODO >>> figure out rust installation
+    ];
     # How to put a file into <user>/
     file = {
       # eg ".screenrc".source = dotfiles/screenrc;
