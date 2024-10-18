@@ -20,33 +20,31 @@
     ];
   };
 
-  home.username = "alunturner";
-  home.homeDirectory = "/Users/alunturner";
-
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05";
-
-  home.packages = [];
-
-  # How to put a file into <user>/
-  home.file = {
-    # eg ".screenrc".source = dotfiles/screenrc;
+  home = {
+    username = "alunturner";
+    homeDirectory = "/Users/alunturner";
+    # You should not change this value, even if you update Home Manager. If you do
+    # want to update the value, then make sure to first check the Home Manager
+    # release notes.
+    stateVersion = "24.05";
+    packages = [];
+    # How to put a file into <user>/
+    file = {
+      # eg ".screenrc".source = dotfiles/screenrc;
+    };
+    # These are sourced when using a shell provided by home-manager.
+    # If you go away from home-manager, manually source from one of:
+    #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+    #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+    #  /etc/profiles/per-user/alunturner/etc/profile.d/hm-session-vars.sh
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
   };
 
   # How to put a file into <user>/.config/
   xdg.configFile = {
     "nvim/colors/pax.lua".text = "require('pax').load()";
-  };
-
-  # These are sourced when using a shell provided by home-manager.
-  # If you go away from home-manager, manually source from one of:
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #  /etc/profiles/per-user/alunturner/etc/profile.d/hm-session-vars.sh
-  home.sessionVariables = {
-    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
