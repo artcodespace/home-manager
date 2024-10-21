@@ -31,7 +31,6 @@
     packages = [
       pkgs.nodejs_22
       pkgs.nodePackages.nodemon
-      pkgs.docker
       # TODO >>> figure out rust installation
     ];
     # How to put a file into <user>/
