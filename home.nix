@@ -103,7 +103,7 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     settings = {
-      format = "[󰇥](yellow) $all";
+      format = "[󰇥](yellow) $directory$git_branch$git_status\n$character";
     };
   };
 
