@@ -7,29 +7,25 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    colorscheme-pax = {
-      url = "github:alunturner/pax";
-      flake = false;
-    };
+    dotfiles.url = "github:alunturner/.dotfiles?ref=flake";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
     ...
-  } @ inputs: let
-    system = "aarch64-darwin";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in {
-    homeConfigurations."alunturner" = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-
-      # Specify your home configuration modules here, for example,
-      # the path to your home.nix.
+  } @ inputs: {
+    homeConfigurations.mac = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.aarch64-darwin;
       modules = [./home.nix];
+      # Pass all inputs through to modules
+      extraSpecialArgs = {inherit inputs;};
+    };
 
-      # Optionally use extraSpecialArgs
-      # to pass through arguments to home.nix
+    homeConfigurations.linux = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      modules = [./home.nix];
+      # Pass all inputs through to modules
       extraSpecialArgs = {inherit inputs;};
     };
   };

@@ -3,23 +3,6 @@
   inputs,
   ...
 }: {
-  # OVERLAYS
-  # We could probably do this more simply, but use this from the guide for now.
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        vimPlugins =
-          prev.vimPlugins
-          // {
-            own-colorscheme-pax = prev.vimUtils.buildVimPlugin {
-              name = "pax";
-              src = inputs.colorscheme-pax;
-            };
-          };
-      })
-    ];
-  };
-
   # HOME
   home = {
     username = "alunturner";
@@ -138,10 +121,6 @@
       {
         plugin = pkgs.vimPlugins.vim-tmux-navigator;
         config = toLua "vim.g.tmux_navigator_no_wrap = 1";
-      }
-      {
-        plugin = pkgs.vimPlugins.own-colorscheme-pax;
-        config = toLua "require('pax').load()";
       }
       {
         plugin = pkgs.vimPlugins.nvim-treesitter;
