@@ -61,7 +61,6 @@
   programs.git = {
     enable = true;
     userName = "alunturner";
-    userEmail = "alun.turner@googlemail.com";
   };
 
   # Tiling window manager
